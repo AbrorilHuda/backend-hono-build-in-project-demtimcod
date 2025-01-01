@@ -37,7 +37,11 @@ app.get("/api", (c) => {
 app.route("/api/posts", Routes);
 
 app.notFound((c) => {
-  return c.text("404 Not Found oyyeh", 404);
+  c.status(404);
+  return c.json({
+    status: 404,
+    message: "Not Found",
+  });
 });
 
 export default app;
