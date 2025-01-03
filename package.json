@@ -2,8 +2,10 @@
   "name": "learn-hono-bun",
   "scripts": {
     "dev": "bun run --hot src/index.ts",
-    "db:migrate": "bunx prisma migrate dev --name posts",
-    "db:reset": "bunx prisma migrate reset"
+    "db:migrate": "bunx prisma migrate dev --name init",
+    "db:reset": "bunx prisma migrate reset",
+    "db:studio": "bunx prisma studio --browser none",
+    "db:debug": "bunx prisma debug"
   },
   "dependencies": {
     "@prisma/client": "^6.1.0",

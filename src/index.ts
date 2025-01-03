@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import { serveStatic } from "hono/bun";
 import { readFileSync } from "fs";
 import { join } from "path";
-import { Routes } from "./routes";
+import { Posts, Users } from "./routes/";
 
 const app = new Hono();
 const publicPath = join(process.cwd(), "./public");
@@ -34,7 +34,10 @@ app.get("/api", (c) => {
   });
 });
 
-app.route("/api/posts", Routes);
+// routes handler
+
+app.route("/api/posts", Posts);
+app.route("/api/users", Users);
 
 app.notFound((c) => {
   c.status(404);
