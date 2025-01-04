@@ -5,7 +5,8 @@
     "db:migrate": "bunx prisma migrate dev --name init",
     "db:reset": "bunx prisma migrate reset",
     "db:studio": "bunx prisma studio --browser none",
-    "db:debug": "bunx prisma debug"
+    "db:debug": "bunx prisma debug",
+    "generate:secret": "bun run scripts/*.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.1.0",

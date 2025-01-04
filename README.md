@@ -22,4 +22,28 @@ To reset database prisma:
 bun run db:reset
 ```
 
+membuka prisam studio
+
+```sh
+bun run db:studio
+```
+
+menjalan prisma debug
+
+```sh
+bun run db:debug
+```
+
+## TOOLS
+
+jika anda menbutuhkan string random untuk secret
+
+jalankan perintah ini
+
+```sh
+bun run generate:secret
+```
+
+maka akan di buatkan secara otomatis file secret.txt dan didalam akan ada string random yang bisa digunakan
+
 open http://localhost:3000

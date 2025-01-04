@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import { serveStatic } from "hono/bun";
+import { env } from "hono/adapter";
 import { readFileSync } from "fs";
 import { join } from "path";
 import { Posts, Users } from "./routes";
@@ -22,9 +23,10 @@ app.get("/", (c) => {
 });
 
 app.get("/api", (c) => {
+  const env_proses = env(c);
   return c.json({
-    name: "demtimcod-API",
-    version: "1.0.0",
+    name: env_proses.NAME,
+    version: env_proses.VERSION,
     copyright: 2024,
     author: {
       username: "abrordc",
