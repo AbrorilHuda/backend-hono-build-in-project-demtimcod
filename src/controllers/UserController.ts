@@ -27,7 +27,7 @@ export async function createUsers(c: Context) {
     const password =
       typeof body["password"] === "string" ? body["password"] : "";
 
-    const post = await prisma.user.create({
+    const user = await prisma.user.create({
       data: {
         name,
         username,
@@ -38,12 +38,39 @@ export async function createUsers(c: Context) {
     return c.json(
       {
         success: true,
-        message: "Create Post Success",
-        data: post,
+        message: "Create User Sucessfully",
+        data: user,
       },
       201
     );
   } catch (e: unknown) {
-    console.error(`Error Creating Post: ${e}`);
+    console.error(`Error Creating User: ${e}`);
+  }
+}
+
+export async function getUserById(c: Context) {
+  try {
+    const userId = c.req.param("id");
+
+    const user = await prisma.user.findUnique({
+      where: {
+        id: userId,
+      },
+    });
+
+    if (!user) {
+      return c.json({
+        code: 404,
+        message: `user id ${userId} Not Found`,
+      });
+    }
+
+    return c.json({
+      code: 200,
+      message: `user with id ${userId}`,
+      data: user,
+    });
+  } catch (e: unknown) {
+    console.error("Error Getting User" + e);
   }
 }

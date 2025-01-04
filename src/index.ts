@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import { serveStatic } from "hono/bun";
 import { readFileSync } from "fs";
 import { join } from "path";
-import { Posts, Users } from "./routes/";
+import { Posts, Users } from "./routes";
 
 const app = new Hono();
 const publicPath = join(process.cwd(), "./public");
