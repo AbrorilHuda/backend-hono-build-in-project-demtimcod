@@ -1,3 +1,5 @@
+# Usage Instructions
+
 To install dependencies:
 
 ```sh
@@ -44,4 +46,6 @@ jalankan perintah ini
 bun run generate:secret
 ```
 
-maka akan di buatkan secara otomatis file secret.txt dan didalam akan ada string random yang bisa digunakan open http://localhost:3000
+maka akan di buatkan secara otomatis file secret.txt dan didalam akan ada string random yang bisa digunakan
+
+open di port 3000
