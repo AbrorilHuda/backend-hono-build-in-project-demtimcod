@@ -48,4 +48,14 @@ bun run generate:secret
 
 maka akan di buatkan secara otomatis file secret.txt dan didalam akan ada string random yang bisa digunakan
 
+### memperkenalkan dc assistent
+
+dc assistent sekarang adalah hal yang sedang saya develop untuk mempermudah kalian memanangement project ini.
+
+fitur sekarang masih generate file controller yang lansung di simpan di controller folder jika tidak ada akan di buatkan folder dengan nama controllers dengan perintah:
+
+```sh
+bun run dc make:controller <namefile>
+```
+
 open di port 3000
