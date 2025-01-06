@@ -6,10 +6,12 @@
     "db:reset": "bunx prisma migrate reset",
     "db:studio": "bunx prisma studio --browser none",
     "db:debug": "bunx prisma debug",
-    "generate:secret": "bun run scripts/*.ts"
+    "generate:secret": "bun run scripts/generate.ts",
+    "dc": "bun run scripts/generate/*.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.1.0",
+    "chalk": "^5.4.1",
     "hono": "^4.6.14",
     "prisma": "^6.1.0"
   },
