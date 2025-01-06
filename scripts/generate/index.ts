@@ -7,7 +7,7 @@ const args = process.argv;
 
 // Validasi argumen
 if (args.length < 4) {
-  console.log(`${labelErr} Format: bun run script.ts make:file <filename>`);
+  console.log(`${labelErr} Format: bun run dc make:controller <filename>`);
   process.exit(0);
 }
 
@@ -16,7 +16,8 @@ const fileName = args[3];
 
 // Pastikan command sesuai
 if (command !== "make:controller") {
-  console.log("Command tidak dikenal. Gunakan: make:file");
+  console.log("Command tidak dikenal. Gunakan: make:controller");
+  console.log(chalk.blue("fitur ini yang masih ada tunggu update selanjutnya"));
   process.exit(0);
 }
 
@@ -26,7 +27,11 @@ const targetFolder = resolve("./src/controllers");
 // Buat folder jika belum ada
 if (!existsSync(targetFolder)) {
   mkdirSync(targetFolder, { recursive: true });
-  console.log(`Folder '${targetFolder}' berhasil dibuat.`);
+  console.log(
+    `${chalk.bgBlue.white.bold(
+      " INFO "
+    )} Folder '${targetFolder}' berhasil dibuat.`
+  );
 }
 
 // Gabungkan folder dengan nama file
