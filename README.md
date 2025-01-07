@@ -52,6 +52,12 @@ maka akan di buatkan secara otomatis file secret.txt dan didalam akan ada string
 
 dc assistent sekarang adalah hal yang sedang saya develop untuk mempermudah kalian memanangement project ini.
 
+untuk melihat semua command yang tersedia gunakan perintah:
+
+```sh
+bun run dc help
+```
+
 fitur sekarang masih generate file controller yang lansung di simpan di controller folder jika tidak ada akan di buatkan folder dengan nama controllers dengan perintah:
 
 ```sh
