@@ -1,13 +1,24 @@
 import { writeFileSync, existsSync, mkdirSync } from "fs";
 import { resolve, join } from "path";
 import chalk from "chalk";
-const labelErr = chalk.bgRed.white.bold(" ERROR ");
-// Ambil argumen terminal
+import { commad } from "./commentData";
+import { commandType } from "./types";
+import { labelInfo, labelError } from "./labels";
+
 const args = process.argv;
+
+if (args[2] == "help") {
+  console.log(chalk.bold("Command yang sekarang bisa di gunakan:\n"));
+  commad.forEach(({ command, description }: commandType) => {
+    const formattedCommand = chalk.green(command.padEnd(20));
+    console.log(`${formattedCommand} ${description}`);
+  });
+  process.exit(0);
+}
 
 // Validasi argumen
 if (args.length < 4) {
-  console.log(`${labelErr} Format: bun run dc make:controller <filename>`);
+  console.log(`${labelError} Format: bun run dc <perintah> <filename>`);
   process.exit(0);
 }
 
@@ -23,39 +34,24 @@ if (command !== "make:controller") {
 
 // Tentukan folder target
 const targetFolder = resolve("./src/controllers");
-
 // Buat folder jika belum ada
 if (!existsSync(targetFolder)) {
   mkdirSync(targetFolder, { recursive: true });
-  console.log(
-    `${chalk.bgBlue.white.bold(
-      " INFO "
-    )} Folder '${targetFolder}' berhasil dibuat.`
-  );
+  console.log(`${labelInfo} Folder '${targetFolder}' berhasil dibuat.`);
 }
-
 // Gabungkan folder dengan nama file
 const filePath = join(targetFolder, `${fileName}Controller.ts`);
-
 // Tulis file di folder target
 try {
   writeFileSync(
     filePath,
     "// file " + fileName.toLowerCase() + "Controller by dc asistents"
   );
-  // Membuat label INFO
-  const label = chalk.bgBlue.white.bold(" INFO ");
-
-  // Pesan teks utama
-  //   const message = `Server running on ${chalk.blue.underline(
-  //     "http://127.0.0.1:8000"
-  //   )}.`;
-
-  //   // Pesan tambahan
-  //   const instruction = chalk.yellow("Press Ctrl+C to stop the server");
-
-  // Tampilkan pesan
-  console.log(`${label} File '${filePath}' ${chalk.green("berhasil dibuat.")}`);
+  console.log(
+    `${labelInfo} File Controller '${filePath}' ${chalk.green(
+      "berhasil dibuat."
+    )}`
+  );
 } catch (err) {
   console.error("Gagal membuat file:", err);
   process.exit(1);

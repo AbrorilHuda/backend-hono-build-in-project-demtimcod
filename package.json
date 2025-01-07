@@ -1,5 +1,6 @@
 {
   "name": "learn-hono-bun",
+  "type": "module",
   "scripts": {
     "dev": "bun run --hot src/index.ts",
     "db:migrate": "bunx prisma migrate dev --name init",
@@ -7,7 +8,7 @@
     "db:studio": "bunx prisma studio --browser none",
     "db:debug": "bunx prisma debug",
     "generate:secret": "bun run scripts/generate.ts",
-    "dc": "bun run scripts/generate/*.ts"
+    "dc": "bun run scripts/generate/index.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.1.0",
