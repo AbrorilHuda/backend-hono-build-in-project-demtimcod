@@ -24,13 +24,13 @@ To reset database prisma:
 bun run db:reset
 ```
 
-membuka prisam studio
+To run prisam studio
 
 ```sh
 bun run db:studio
 ```
 
-menjalan prisma debug
+To run prisma debug
 
 ```sh
 bun run db:debug
