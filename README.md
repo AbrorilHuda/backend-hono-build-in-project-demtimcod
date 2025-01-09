@@ -43,7 +43,7 @@ jika anda menbutuhkan string random untuk secret
 jalankan perintah ini
 
 ```sh
-bun run generate:secret
+bun generate:secret
 ```
 
 maka akan di buatkan secara otomatis file secret.txt dan didalam akan ada string random yang bisa digunakan
@@ -55,13 +55,13 @@ dc assistent sekarang adalah hal yang sedang saya develop untuk mempermudah kali
 untuk melihat semua command yang tersedia gunakan perintah:
 
 ```sh
-bun run dc help
+bun dc help
 ```
 
 fitur sekarang masih generate file controller yang lansung di simpan di controller folder jika tidak ada akan di buatkan folder dengan nama controllers dengan perintah:
 
 ```sh
-bun run dc make:controller <namefile>
+bun dc make:controller <namefile>
 ```
 
 open di port 3000
