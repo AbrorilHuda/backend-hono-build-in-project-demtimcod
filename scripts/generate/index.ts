@@ -17,7 +17,7 @@ if (args[2] == "help") {
 
 // Validasi argumen
 if (args.length < 4) {
-  console.log(`${labelWarn} Format: bun run dc <perintah> <filename>`);
+  console.log(`${labelWarn} Format: bun dc <perintah> <filename>`);
   process.exit(0);
 }
 

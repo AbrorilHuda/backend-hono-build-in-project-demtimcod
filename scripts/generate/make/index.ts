@@ -3,6 +3,7 @@ import { resolve, join } from "path";
 import chalk from "chalk";
 import { labelInfo } from "../labels";
 import capitalizeFirstLetter from "../convert";
+import defaultContent from "./defaultContent";
 
 export function makeRouter(fileName: String) {
   const targetFolder = resolve("./src/routes");
@@ -14,10 +15,7 @@ export function makeRouter(fileName: String) {
   const filePath = join(targetFolder, `${capitalizeFirstLetter(fileName)}.ts`);
 
   try {
-    writeFileSync(
-      filePath,
-      "// file " + fileName.toLowerCase() + " route by dc asistents"
-    );
+    writeFileSync(filePath, defaultContent(capitalizeFirstLetter(fileName)));
     console.log(
       `${labelInfo} File Controller '${filePath}' ${chalk.green(
         "berhasil dibuat."
@@ -44,7 +42,7 @@ export function makeController(fileName: String) {
   try {
     writeFileSync(
       filePath,
-      "// file " + fileName.toLowerCase() + "Controller by dc asistents"
+      defaultContent(fileName.toLowerCase() + "Controller")
     );
     console.log(
       `${labelInfo} File Controller '${filePath}' ${chalk.green(

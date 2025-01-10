@@ -58,10 +58,16 @@ untuk melihat semua command yang tersedia gunakan perintah:
 bun dc help
 ```
 
-fitur sekarang masih generate file controller yang lansung di simpan di controller folder jika tidak ada akan di buatkan folder dengan nama controllers dengan perintah:
+membuat file controller folder jika tidak ada akan di buatkan folder dengan nama `src/controllers` dengan perintah:
 
 ```sh
 bun dc make:controller <namefile>
+```
+
+membuat file route sama seperti controller namun file nya di simpan di routes jika tidak ada folder routes akan di buatkan `src/routes`:
+
+```sh
+bun dc make:route <namefile>
 ```
 
 open di port 3000
