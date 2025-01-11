@@ -27,7 +27,7 @@ app.get("/api", (c) => {
   return c.json({
     name: env_proses.NAME,
     version: env_proses.VERSION,
-    copyright: 2024,
+    copyright: env_proses.COPYRIGHT,
     author: {
       username: "abrordc",
       github: "https://github.com/AbrorilHuda",

@@ -12,6 +12,7 @@ if (args[2] == "help") {
     const formattedCommand = chalk.green(command.padEnd(20));
     console.log(`${formattedCommand} ${description}`);
   });
+  console.log(chalk.yellow("\n                        by: abrordc"));
   process.exit(0);
 }
 
@@ -23,6 +24,7 @@ if (args.length < 4) {
 
 const command = args[2];
 const fileName = args[3];
+const maker = args[4];
 
 if (command == "make:route") {
   makeRouter(fileName);
