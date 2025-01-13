@@ -70,4 +70,18 @@ membuat file route sama seperti controller namun file nya di simpan di routes ji
 bun dc make:route <namefile>
 ```
 
-open di port 3000
+untuk membuat file type untuk typescript bisa menggunakan perintah:
+
+```sh
+bun cd make:type <namefile>
+```
+
+dan untuk membuat route sekaligus controller bisa menggunakan perintah:
+
+```sh
+bun dc make:route <namefile> --controller
+```
+
+dan itu akan otomatis terconnection route dan controller nya.
+
+open di port `3000`
