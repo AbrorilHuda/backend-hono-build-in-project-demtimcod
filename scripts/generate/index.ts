@@ -2,7 +2,7 @@ import chalk from "chalk";
 import { commad } from "./commentData";
 import { commandType } from "./types";
 import { labelWarn } from "./labels";
-import { makeController, makeRouter } from "./make";
+import { makeController, makeRouter, makeType } from "./make";
 
 const args = process.argv;
 
@@ -24,14 +24,24 @@ if (args.length < 4) {
 
 const command = args[2];
 const fileName = args[3];
-const maker = args[4];
+const makerCommad = args[4];
 
 if (command == "make:route") {
-  makeRouter(fileName);
+  let acc = false;
+  if (makerCommad == "--controller") {
+    makeController(fileName);
+    acc = true;
+  }
+  makeRouter(fileName, acc);
 }
 
 if (command == "make:controller") {
   makeController(fileName);
+  process.exit(0);
+}
+
+if (command == "make:type") {
+  makeType(fileName);
 }
 
 console.log("Command tidak dikenal. Gunakan: make:controller");
