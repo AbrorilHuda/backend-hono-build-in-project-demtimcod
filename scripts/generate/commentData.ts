@@ -10,6 +10,10 @@ const commands = [
     description: "membuat sekaligus route dan controllernya",
   },
   { command: "make:type", description: "membuat file type untuk typescript" },
+  {
+    command: "make:interface",
+    description: "membuat file interface untuk typescript",
+  },
 ];
 
 export const commad = commands;

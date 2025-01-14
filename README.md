@@ -73,7 +73,13 @@ bun dc make:route <namefile>
 untuk membuat file type untuk typescript bisa menggunakan perintah:
 
 ```sh
-bun cd make:type <namefile>
+bun dc make:type <namefile>
+```
+
+untuk membuat file interface untuk typescript akan di simpan di folder `types` jugak dengan perintah:
+
+```sh
+bun dc make:interface <namefile>
 ```
 
 dan untuk membuat route sekaligus controller bisa menggunakan perintah:
