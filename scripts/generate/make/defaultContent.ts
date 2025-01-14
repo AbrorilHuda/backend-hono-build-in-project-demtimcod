@@ -62,3 +62,10 @@ export type ${nameType}Type = {
     // typeCode
 }`;
 }
+
+export function defaultInterface(interfaceName: String) {
+  return `// di generate oleh dc assistents
+export interface ${interfaceName}Interface {
+    // interfaceCode
+}`;
+}

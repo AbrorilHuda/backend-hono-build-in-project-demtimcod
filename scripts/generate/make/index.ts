@@ -3,7 +3,12 @@ import { resolve, join } from "path";
 import chalk from "chalk";
 import { labelInfo } from "../labels";
 import capitalizeFirstLetter from "../convert";
-import { defaultController, defaultRoute, defaultType } from "./defaultContent";
+import {
+  defaultController,
+  defaultRoute,
+  defaultType,
+  defaultInterface,
+} from "./defaultContent";
 
 export function makeRouter(fileName: String, acc: Boolean) {
   const validateFileName = acc == false ? "" : fileName;
@@ -73,6 +78,34 @@ export function makeType(fileName: String) {
     writeFileSync(filePath, defaultType(fileName));
     console.log(
       `${labelInfo} File Type '${filePath}' ${chalk.green("berhasil dibuat.")}`
+    );
+    process.exit(0);
+  } catch (err) {
+    console.error("Gagal membuat file:", err);
+    process.exit(1);
+  }
+}
+
+export function makeInterface(fileName: String) {
+  const targetFolder = resolve("./types");
+  if (!existsSync(targetFolder)) {
+    mkdirSync(targetFolder, { recursive: true });
+    console.log(
+      `${labelInfo} Folder '${targetFolder}' ${chalk.green("berhasil dibuat.")}`
+    );
+  }
+
+  const filePath = join(
+    targetFolder,
+    `${capitalizeFirstLetter(fileName) + "Interface"}.ts`
+  );
+
+  try {
+    writeFileSync(filePath, defaultInterface(fileName));
+    console.log(
+      `${labelInfo} File Inteface '${filePath}' ${chalk.green(
+        "berhasil dibuat."
+      )}`
     );
     process.exit(0);
   } catch (err) {

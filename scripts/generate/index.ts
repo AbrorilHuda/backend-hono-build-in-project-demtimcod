@@ -2,7 +2,7 @@ import chalk from "chalk";
 import { commad } from "./commentData";
 import { commandType } from "./types";
 import { labelWarn } from "./labels";
-import { makeController, makeRouter, makeType } from "./make";
+import { makeController, makeRouter, makeType, makeInterface } from "./make";
 
 const args = process.argv;
 
@@ -42,6 +42,10 @@ if (command == "make:controller") {
 
 if (command == "make:type") {
   makeType(fileName);
+}
+
+if (command == "make:interface") {
+  makeInterface(fileName);
 }
 
 console.log("Command tidak dikenal. Gunakan: make:controller");
