@@ -12,11 +12,11 @@
   },
   "dependencies": {
     "@prisma/client": "^6.1.0",
-    "chalk": "^5.4.1",
     "hono": "^4.6.14",
     "prisma": "^6.1.0"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "chalk": "^5.4.1"
   }
 }
