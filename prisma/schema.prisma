@@ -14,22 +14,27 @@ datasource db {
 }
 
 
+model User {
+  id String @id @default(uuid())
+  name String @db.VarChar(100)
+  username String @unique @db.VarChar(50)
+  password String @db.VarChar(100)
+  token String @db.VarChar(100)
+
+  post Post[]
+  @@map("users")
+}
+
 
 model Post {
  id Int @id @default(autoincrement())
  title String @db.VarChar(255)
- content String?
+ content String? 
  createdAt DateTime @default(now())
  updatedAt DateTime @updatedAt
+ id_user String
+
+ user User @relation(fields: [id_user],references: [id] )
 
  @@map("posts")
-}
-
-model User {
-  id String @id @default(uuid())
-  name String
-  username String @unique
-  password String
-
-  @@map("users")
 }

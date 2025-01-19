@@ -1,12 +1,17 @@
 // di generate oleh dc assistents
-import {Hono} from "hono";
+import { Hono } from "hono";
 
-import {getBlogs, createBlog, getBlogById, updateBlogById, deleteBlogById} from "../controllers/blogController";
-
+import {
+  getBlogs,
+  createBlog,
+  getBlogById,
+  updateBlogById,
+  deleteBlogById,
+} from "../controllers/blogController";
 
 const router = new Hono();
 /*
-@yourfunction itu function ubah function yang kalian buat
+@yourfunction itu function ubah funlerction yang kalian buat
 atau menggunakan perintah bun dc make:route --controller
 */
 
