@@ -4,6 +4,8 @@ import { env } from "hono/adapter";
 import { readFileSync } from "fs";
 import { join } from "path";
 import { Posts, Users } from "./routes";
+import { HTTPException } from "hono/http-exception";
+import { ZodError } from "zod";
 
 const app = new Hono();
 const publicPath = join(process.cwd(), "./public");
@@ -47,6 +49,25 @@ app.notFound((c) => {
     status: 404,
     message: "Not Found",
   });
+});
+
+app.onError(async (err, c) => {
+  if (err instanceof HTTPException) {
+    c.status(err.status);
+    return c.json({
+      errors: err.message,
+    });
+  } else if (err instanceof ZodError) {
+    c.status(400);
+    return c.json({
+      errors: err.message,
+    });
+  } else {
+    c.status(500);
+    return c.json({
+      errors: err.message,
+    });
+  }
 });
 
 export default app;
