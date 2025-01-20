@@ -90,4 +90,18 @@ bun dc make:route <namefile> --controller
 
 dan itu akan otomatis terconnection route dan controller nya.
 
+### new command ✨
+
+```sh
+bun dc make:validation <namafile>
+```
+
+membuat file validation di dalam folder `src/validation`
+
+```sh
+bun dc make:service <namefile>
+```
+
+membuat file service di dalam folder `src/services`
+
 open di port `3000`
