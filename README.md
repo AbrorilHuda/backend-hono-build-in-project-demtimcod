@@ -38,7 +38,7 @@ bun run db:debug
 
 ## Doc API
 
-[Doc API]("https://github.com/AbrorilHuda/backend-hono-build-in-project-demtimcod/tree/main/docs")
+[Doc API](https://github.com/AbrorilHuda/backend-hono-build-in-project-demtimcod/tree/main/docs)
 
 ## TOOLS
 
@@ -110,4 +110,4 @@ membuat file service di dalam folder `src/services`
 
 `jika ada masalah atau pun bug tinggalkan komentar di bawah ini`
 
-[issues]("https://github.com/AbrorilHuda/backend-hono-build-in-project-demtimcod/issues")
+[issues](https://github.com/AbrorilHuda/backend-hono-build-in-project-demtimcod/issues)
