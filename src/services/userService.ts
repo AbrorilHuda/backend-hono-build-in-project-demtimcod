@@ -136,4 +136,17 @@ export class userService {
 
     return toUserResponse(user);
   }
+
+  static async logout(user: User): Promise<Boolean> {
+    await prisma.user.update({
+      where: {
+        username: user.username,
+      },
+      data: {
+        token: null,
+      },
+    });
+
+    return true;
+  }
 }

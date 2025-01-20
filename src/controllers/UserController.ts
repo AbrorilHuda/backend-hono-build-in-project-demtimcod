@@ -44,3 +44,15 @@ export async function updateUserCurrent(c: Context) {
     data: response,
   });
 }
+
+export async function logoutUser(c: Context) {
+  const user = c.get("user") as User;
+  const response = await userService.logout(user);
+
+  return c.json({
+    data: {
+      logout: response,
+      message: "logout success",
+    },
+  });
+}

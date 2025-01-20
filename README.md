@@ -36,6 +36,10 @@ To run prisma debug
 bun run db:debug
 ```
 
+## Doc API
+
+[Doc API]("https://github.com/AbrorilHuda/backend-hono-build-in-project-demtimcod/tree/main/docs")
+
 ## TOOLS
 
 jika anda menbutuhkan string random untuk secret
@@ -104,4 +108,6 @@ bun dc make:service <namefile>
 
 membuat file service di dalam folder `src/services`
 
-open di port `3000`
+`jika ada masalah atau pun bug tinggalkan komentar di bawah ini`
+
+[issues]("https://github.com/AbrorilHuda/backend-hono-build-in-project-demtimcod/issues")

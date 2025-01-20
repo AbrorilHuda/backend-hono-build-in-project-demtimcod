@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import {
   getUserCurrent,
   loginUser,
+  logoutUser,
   registerUser,
   updateUserCurrent,
 } from "../controllers/UserController";
@@ -23,5 +24,6 @@ router.use(async (c, next) => {
 
 router.get("/current", (c) => getUserCurrent(c));
 router.patch("/current", (c) => updateUserCurrent(c));
+router.delete("/current", (c) => logoutUser(c));
 
 export const Users = router;
