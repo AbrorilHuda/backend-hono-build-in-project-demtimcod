@@ -4,9 +4,12 @@ import { HTTPException } from "hono/http-exception";
 import {
   LoginUserRequst,
   RegisterUserRequest,
+  TokenType,
   toUserResponse,
+  UpdateUserRequest,
   UserResponse,
 } from "../../types/User";
+import { User } from "@prisma/client";
 
 export class userService {
   static async register(request: RegisterUserRequest): Promise<UserResponse> {
@@ -80,5 +83,57 @@ export class userService {
     const response = toUserResponse(user);
     response.token = user.token!;
     return response;
+  }
+
+  static async get(token: TokenType): Promise<User> {
+    const result = userValidation.TOKEN.safeParse(token);
+
+    if (result.error) {
+      throw new HTTPException(401, {
+        message: "Unauthorized",
+      });
+    }
+
+    token = result.data;
+
+    const user = await prisma.user.findFirst({
+      where: {
+        token: token,
+      },
+    });
+
+    if (!user) {
+      throw new HTTPException(401, {
+        message: "Unauthorized",
+      });
+    }
+    return user;
+  }
+
+  static async update(
+    user: User,
+    request: UpdateUserRequest
+  ): Promise<UserResponse> {
+    request = userValidation.UPDATE.parse(request);
+
+    if (request.name) {
+      user.name = request.name;
+    }
+
+    if (request.password) {
+      user.password = await Bun.password.hash(request.password, {
+        algorithm: "bcrypt",
+        cost: 10,
+      });
+    }
+
+    user = await prisma.user.update({
+      where: {
+        username: user.username,
+      },
+      data: user,
+    });
+
+    return toUserResponse(user);
   }
 }

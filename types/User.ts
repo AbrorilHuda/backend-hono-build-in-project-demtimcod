@@ -12,11 +12,17 @@ export type LoginUserRequst = {
   password: string;
 };
 
+export type UpdateUserRequest = {
+  name?: string;
+  password?: string;
+};
 export type UserResponse = {
   name: string;
   username: string;
   token?: string;
 };
+
+export type TokenType = string | undefined | null;
 
 export function toUserResponse(user: User): UserResponse {
   return {
