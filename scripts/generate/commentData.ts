@@ -14,6 +14,14 @@ const commands = [
     command: "make:interface",
     description: "membuat file interface untuk typescript",
   },
+  {
+    command: "make:service",
+    description: "membuat file service",
+  },
+  {
+    command: "make:validation",
+    description: "membuat file validation",
+  },
 ];
 
 export const commad = commands;

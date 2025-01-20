@@ -69,3 +69,22 @@ export interface ${interfaceName}Interface {
     // interfaceCode
 }`;
 }
+
+export function defaultService(serviceName: String) {
+  return `// di generate oleh dc assistents
+export class ${serviceName.toLowerCase()}Service {
+    // code service
+
+    /* example ini mengggunakan type static
+    static async get(){}
+    */
+}`;
+}
+
+export function defaultValidation(validationName: String) {
+  return `// import {z} from "zod" // validation ini menggunakan library zod
+// di generate oleh dc assistents
+export class ${validationName.toLowerCase()}Validation {
+    // code validation
+}`;
+}

@@ -2,7 +2,14 @@ import chalk from "chalk";
 import { commad } from "./commentData";
 import { commandType } from "./types";
 import { labelWarn } from "./labels";
-import { makeController, makeRouter, makeType, makeInterface } from "./make";
+import {
+  makeController,
+  makeRouter,
+  makeType,
+  makeInterface,
+  makeService,
+  makeValidation,
+} from "./make";
 
 const args = process.argv;
 
@@ -10,9 +17,9 @@ if (args[2] == "help") {
   console.log(chalk.bold("Command yang sekarang bisa di gunakan:\n"));
   commad.forEach(({ command, description }: commandType) => {
     const formattedCommand = chalk.green(command.padEnd(20));
-    console.log(`${formattedCommand} ${description}`);
+    console.log(`${formattedCommand} ${description}\n`);
   });
-  console.log(chalk.yellow("\n                        by: abrordc"));
+  console.log(chalk.yellow("                        by: abrordc🔥"));
   process.exit(0);
 }
 
@@ -46,6 +53,14 @@ if (command == "make:type") {
 
 if (command == "make:interface") {
   makeInterface(fileName);
+}
+
+if (command == "make:service") {
+  makeService(fileName);
+}
+
+if (command == "make:validation") {
+  makeValidation(fileName);
 }
 
 console.log("Command tidak dikenal. Gunakan: make:controller");

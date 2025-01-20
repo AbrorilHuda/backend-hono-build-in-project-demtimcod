@@ -8,6 +8,8 @@ import {
   defaultRoute,
   defaultType,
   defaultInterface,
+  defaultService,
+  defaultValidation,
 } from "./defaultContent";
 
 export function makeRouter(fileName: String, acc: Boolean) {
@@ -104,6 +106,56 @@ export function makeInterface(fileName: String) {
     writeFileSync(filePath, defaultInterface(fileName));
     console.log(
       `${labelInfo} File Inteface '${filePath}' ${chalk.green(
+        "berhasil dibuat."
+      )}`
+    );
+    process.exit(0);
+  } catch (err) {
+    console.error("Gagal membuat file:", err);
+    process.exit(1);
+  }
+}
+
+export function makeService(fileName: String) {
+  const targetFolder = resolve("./src/services");
+  if (!existsSync(targetFolder)) {
+    mkdirSync(targetFolder, { recursive: true });
+    console.log(
+      `${labelInfo} Folder '${targetFolder}' ${chalk.green("berhasil dibuat.")}`
+    );
+  }
+
+  const filePath = join(targetFolder, `${fileName.toLowerCase()}Service.ts`);
+
+  try {
+    writeFileSync(filePath, defaultService(fileName));
+    console.log(
+      `${labelInfo} File Service '${filePath}' ${chalk.green(
+        "berhasil dibuat."
+      )}`
+    );
+    process.exit(0);
+  } catch (err) {
+    console.error("Gagal membuat file:", err);
+    process.exit(1);
+  }
+}
+
+export function makeValidation(fileName: String) {
+  const targetFolder = resolve("./src/validation");
+  if (!existsSync(targetFolder)) {
+    mkdirSync(targetFolder, { recursive: true });
+    console.log(
+      `${labelInfo} Folder '${targetFolder}' ${chalk.green("berhasil dibuat.")}`
+    );
+  }
+
+  const filePath = join(targetFolder, `${fileName.toLowerCase()}Validation.ts`);
+
+  try {
+    writeFileSync(filePath, defaultValidation(fileName));
+    console.log(
+      `${labelInfo} File Validation '${filePath}' ${chalk.green(
         "berhasil dibuat."
       )}`
     );
