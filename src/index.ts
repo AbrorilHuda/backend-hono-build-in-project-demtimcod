@@ -6,9 +6,13 @@ import { join } from "path";
 import { Posts, Users } from "./routes";
 import { HTTPException } from "hono/http-exception";
 import { ZodError } from "zod";
+import { setupSwagger } from "./utils/swagger";
+import { OpenAPIHono } from "@hono/zod-openapi";
 
-const app = new Hono();
+const app = new OpenAPIHono();
 const publicPath = join(process.cwd(), "./public");
+
+setupSwagger(app);
 
 // static file render
 app.use(
