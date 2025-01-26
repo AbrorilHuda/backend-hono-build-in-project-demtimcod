@@ -2,6 +2,7 @@ import prisma from "../../prisma/client";
 import { userValidation } from "../validation/userValidation";
 import { HTTPException } from "hono/http-exception";
 import {
+  getAllUser,
   LoginUserRequst,
   RegisterUserRequest,
   TokenType,
@@ -12,6 +13,16 @@ import {
 import { User } from "@prisma/client";
 
 export class userService {
+  static async getAll(): Promise<getAllUser[]> {
+    const users = await prisma.user.findMany({
+      select: {
+        id: true,
+        name: true,
+        username: true,
+      },
+    });
+    return users;
+  }
   static async register(request: RegisterUserRequest): Promise<UserResponse> {
     // validasi request
     request = userValidation.REGISTER.parse(request);

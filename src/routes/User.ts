@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import {
+  getAllUser,
   getUserCurrent,
   loginUser,
   logoutUser,
@@ -14,9 +15,18 @@ const router = new Hono<{ Variables: ApplicationVariable }>();
 router.post("/", (c) => registerUser(c));
 
 router.post("/login", (c) => loginUser(c));
+router.get("/all", (c) => getAllUser(c));
 
 router.use(async (c, next) => {
-  const token = c.req.header("Authorization");
+  let token = c.req.header("Authorization");
+  if (!token || !token.startsWith("Bearer ")) {
+    c.status(401);
+    c.json({ error: "Unauthorized" });
+  }
+  if (token) {
+    token = token.split(" ")[1];
+  }
+
   const user = await userService.get(token);
   c.set("user", user);
   await next();

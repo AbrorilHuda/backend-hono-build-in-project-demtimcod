@@ -8,6 +8,15 @@ import {
 import { userService } from "../services/userService";
 import { User } from "@prisma/client";
 
+export async function getAllUser(c: Context) {
+  const response = await userService.getAll();
+
+  return c.json({
+    log: "get all user",
+    data: response,
+  });
+}
+
 export async function registerUser(c: Context) {
   const request = (await c.req.json()) as RegisterUserRequest;
 

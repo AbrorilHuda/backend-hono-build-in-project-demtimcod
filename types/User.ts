@@ -1,5 +1,10 @@
 import { User } from "@prisma/client";
 
+export type getAllUser = {
+  name: string;
+  username: string;
+};
+
 // di generate oleh dc assistents
 export type RegisterUserRequest = {
   name: string;

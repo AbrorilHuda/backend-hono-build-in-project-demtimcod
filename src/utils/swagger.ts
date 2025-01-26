@@ -15,6 +15,12 @@ export function setupSwagger(app: OpenAPIHono) {
     password: z.string().min(1, "Password must not be empty"),
   });
 
+  const UserAllSchema = z.object({
+    id: z.string().min(1, "Id must not be empty"),
+    username: z.string().min(1, "Username must not be empty"),
+    password: z.string().min(1, "Password must not be empty"),
+  });
+
   const UserUpdateSchema = z.object({
     name: z.string().optional(),
     password: z.string().optional(),
@@ -94,6 +100,32 @@ export function setupSwagger(app: OpenAPIHono) {
                             username: { type: "string" },
                             name: { type: "string" },
                             token: { type: "string" },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+        "/api/users/all": {
+          get: {
+            tags: ["User"],
+            summary: "get all data users",
+            responses: {
+              "200": {
+                description: "Profil pengguna berhasil diambil",
+                content: {
+                  "application/json": {
+                    schema: {
+                      type: "object",
+                      properties: {
+                        data: {
+                          type: "object",
+                          properties: {
+                            data: [],
                           },
                         },
                       },
